@@ -26,7 +26,9 @@ public class mainScreen extends javax.swing.JFrame {
     private static final int[] BETS = {0, 10, 25, 50, 100};
     
     public mainScreen(int dificuldade) {
+
         this.dificuldade = dificuldade;
+
         player = new Player();
         dealer = new Dealer();
         deck = new Deck(dificuldade);
@@ -310,6 +312,7 @@ public class mainScreen extends javax.swing.JFrame {
 
         ImageIcon ii;
 
+        // Set back card
         if(c.isBack())
             ii = CardIconManager.back;
         else
@@ -317,6 +320,7 @@ public class mainScreen extends javax.swing.JFrame {
 
         switch(cardLabel){
 
+        // Set card icons
         case "PCard1":
             PCard1.setIcon(ii);
             break;
@@ -365,10 +369,11 @@ public class mainScreen extends javax.swing.JFrame {
 
     private void BuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyActionPerformed
 
+        // Wrapper para tratamento de excecao da interface grafica
         try{
             buyCard();
         }catch(Exception e){
-            e.printStackTrace();
+            System.err.println("Erro, não deveria poder comprar carta");
         }
 
         Double.setEnabled((firstbet = false));
@@ -381,6 +386,7 @@ public class mainScreen extends javax.swing.JFrame {
             throw new Exception("Mão Estourada");
         }
 
+        // Player compra uma carta
         player.buyCard(player,dealer);
         PlayerPoints.setText(Integer.toString(player.getPoints()));
         NDeck.setText(Integer.toString(deck.nCards()));
@@ -505,12 +511,14 @@ public class mainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_SurrenderActionPerformed
 
     private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
-        // TODO add your handling code here:
+
+        // Set interface texts
         PlayerPoints.setText(Integer.toString(player.getPoints()));
         DealerPoints.setText(Integer.toString(player.getPoints()));
         PBet.setText(Integer.toString(bet));
         PMoney.setText(Integer.toString(player.getMoney()));
         
+        // Set buttons interactibility
         Next.setVisible(false);
         Buy.setEnabled(false);
         Double.setEnabled(false);
@@ -534,6 +542,7 @@ public class mainScreen extends javax.swing.JFrame {
     }
     
     private void finishGame(boolean win){
+        
         Vector<Card> hand = dealer.getHand();
 
         for(Card c : hand){
@@ -545,13 +554,18 @@ public class mainScreen extends javax.swing.JFrame {
             DealerPoints.setText(Integer.toString(dealer.getPoints()));
         }
 
+        // Check if player wins or loses money
         if(win) player.winMoney(bet);
         else player.loseMoney(bet);
         
+        // Delete player and dealer's hands
         player.removeHand();
         dealer.removeHand();
 
+        // Reset bet
         bet = 0;
+
+        // Set button states
         Next.setVisible(true);
         Buy.setEnabled(false);
         Double.setEnabled(false);
@@ -559,6 +573,7 @@ public class mainScreen extends javax.swing.JFrame {
         Surrender.setEnabled(false);
         BET.setEnabled(false);
         
+        // Player is bankrupt
         if(player.getMoney() < 10){
             dispose();
             new start().setVisible(true);
