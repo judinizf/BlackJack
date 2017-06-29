@@ -10,9 +10,9 @@ public class Deck{
     private final int nCards;
     private int top;
 
-    public final int DECK_SIZE = 52;
-    public final int CARD_SIZE = 13;
-    public final int SUIT_SIZE = 4;
+    public static final int DECK_SIZE = 52;
+    public static final int CARD_SIZE = 13;
+    public static final int SUIT_SIZE = 4;
     
     private int count = 0;
 

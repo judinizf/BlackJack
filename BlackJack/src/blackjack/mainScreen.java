@@ -37,8 +37,11 @@ public class mainScreen extends javax.swing.JFrame {
         WIN.setVisible(false);
         LOSE.setVisible(false);
         Next.setVisible(false);
+        resetCardIcons();
 
         NDeck.setText(Integer.toString(dificuldade*52));
+
+        CardIconManager.loadImages();
     }
 
     private mainScreen() {
@@ -284,6 +287,77 @@ public class mainScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void resetCardIcons(){
+
+        PCard1.setIcon("");
+        PCard2.setIcon("");
+        PCard3.setIcon("");
+        PCard4.setIcon("");
+        PCard5.setIcon("");
+        PCard6.setIcon("");
+        PCard7.setIcon("");
+
+        DCard1.setIcon("");
+        DCard2.setIcon("");
+        DCard3.setIcon("");
+        DCard4.setIcon("");
+        DCard5.setIcon("");
+        DCard6.setIcon("");
+        DCard7.setIcon("");
+
+    }
+
+    private void setCardIcons(Card c, String cardLabel){
+
+        switch(cardLabel){
+
+        case "PCard1":
+            PCard1.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "PCard2":
+            PCard2.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "PCard3":
+            PCard3.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "PCard4":
+            PCard4.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "PCard5":
+            PCard5.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "PCard6":
+            PCard6.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "PCard7":
+            PCard7.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+
+        case "DCard1":
+            DCard1.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "DCard2":
+            DCard2.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "DCard3":
+            DCard3.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "DCard4":
+            DCard4.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "DCard5":
+            DCard5.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "DCard6":
+            DCard6.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        case "DCard7":
+            DCard7.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            break;
+        }
+
+    }
+
     private void BuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyActionPerformed
         // TODO add your handling code here:
         try{
@@ -312,6 +386,11 @@ public class mainScreen extends javax.swing.JFrame {
         if(player.getPoints() > 21){
             lostGame();
         }
+
+        Vector<Card> v = player.getHand();
+        Card c = v.get(v.size()-1);
+
+        setCardIcons(c, "PCard" + Integer.toString(v.size()-1));
     }
     
     private void BETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BETActionPerformed
