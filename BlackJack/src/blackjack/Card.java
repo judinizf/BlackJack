@@ -35,6 +35,29 @@ public class Card {
     public int getSuit(){
         return suit;
     }
+
+    @Override
+    public String toString(){
+
+        String s = "";
+
+        switch(this.suit){
+        case 1:
+            s += "S";
+            break;
+        case 2:
+            s += "H";
+            break;
+        case 3:
+            s += "D";
+            break;
+        case 4:
+            s += "C";
+            break;
+        }
+
+        return (s + Integer.toString(this.cardValue));
+    }
     
     /*public String getCardString(){
         switch(this.cardValue)

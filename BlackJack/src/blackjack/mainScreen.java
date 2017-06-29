@@ -6,6 +6,8 @@
 package blackjack;
 
 import java.util.Vector;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author juvest
@@ -289,21 +291,21 @@ public class mainScreen extends javax.swing.JFrame {
 
     private void resetCardIcons(){
 
-        PCard1.setIcon("");
-        PCard2.setIcon("");
-        PCard3.setIcon("");
-        PCard4.setIcon("");
-        PCard5.setIcon("");
-        PCard6.setIcon("");
-        PCard7.setIcon("");
+        PCard1.setIcon(new ImageIcon(""));
+        PCard2.setIcon(new ImageIcon(""));
+        PCard3.setIcon(new ImageIcon(""));
+        PCard4.setIcon(new ImageIcon(""));
+        PCard5.setIcon(new ImageIcon(""));
+        PCard6.setIcon(new ImageIcon(""));
+        PCard7.setIcon(new ImageIcon(""));
 
-        DCard1.setIcon("");
-        DCard2.setIcon("");
-        DCard3.setIcon("");
-        DCard4.setIcon("");
-        DCard5.setIcon("");
-        DCard6.setIcon("");
-        DCard7.setIcon("");
+        DCard1.setIcon(new ImageIcon(""));
+        DCard2.setIcon(new ImageIcon(""));
+        DCard3.setIcon(new ImageIcon(""));
+        DCard4.setIcon(new ImageIcon(""));
+        DCard5.setIcon(new ImageIcon(""));
+        DCard6.setIcon(new ImageIcon(""));
+        DCard7.setIcon(new ImageIcon(""));
 
     }
 
@@ -312,47 +314,47 @@ public class mainScreen extends javax.swing.JFrame {
         switch(cardLabel){
 
         case "PCard1":
-            PCard1.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            PCard1.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "PCard2":
-            PCard2.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            PCard2.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "PCard3":
-            PCard3.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            PCard3.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "PCard4":
-            PCard4.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            PCard4.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "PCard5":
-            PCard5.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            PCard5.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "PCard6":
-            PCard6.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            PCard6.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "PCard7":
-            PCard7.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            PCard7.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
 
         case "DCard1":
-            DCard1.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            DCard1.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "DCard2":
-            DCard2.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            DCard2.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "DCard3":
-            DCard3.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            DCard3.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "DCard4":
-            DCard4.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            DCard4.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "DCard5":
-            DCard5.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            DCard5.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "DCard6":
-            DCard6.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            DCard6.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         case "DCard7":
-            DCard7.setIcon(CardIconManager.cards[c.getSuit()][c.getValue()]);
+            DCard7.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
             break;
         }
 
@@ -380,17 +382,34 @@ public class mainScreen extends javax.swing.JFrame {
         player.buyCard();
         PlayerPoints.setText(Integer.toString(player.getPoints()));
         NDeck.setText(Integer.toString(deck.nCards()));
-        //caso passe das duas primeiras cartas, deixa o botao de double nao clicavel
+
+        updateCardIcon();
 
         // adiciona a carta na interface
         if(player.getPoints() > 21){
             lostGame();
         }
+    }
 
+    private void updateCardIcon(){
+
+        // Seta os icones de cartas do player
         Vector<Card> v = player.getHand();
-        Card c = v.get(v.size()-1);
+        int n = v.size();
 
-        setCardIcons(c, "PCard" + Integer.toString(v.size()-1));
+        for (int i = 0; i < n; i++) {
+            Card c = v.get(i);
+            setCardIcons(c, "PCard" + Integer.toString(i+1));
+        }
+
+        // Seta os icones de cartas do dealer
+        v = dealer.getHand();
+        n = v.size();
+
+        for (int i = 0; i < n; i++) {
+            Card c = v.get(i);
+            setCardIcons(c, "DCard" + Integer.toString(i+1));
+        }
     }
     
     private void BETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BETActionPerformed
@@ -417,6 +436,8 @@ public class mainScreen extends javax.swing.JFrame {
             Stop.setEnabled(true);
             Surrender.setEnabled((firstbet = true));
             BET.setEnabled(false);
+
+            updateCardIcon();
         }
         
     }//GEN-LAST:event_BETActionPerformed
@@ -427,11 +448,11 @@ public class mainScreen extends javax.swing.JFrame {
         while(dealer.getPoints() < player.getPoints()){
 
             dealer.buyCard();
+            updateCardIcon();
             
             // Show dealer hand's points
             DealerPoints.setText(Integer.toString(dealer.getPoints()));
             NDeck.setText(Integer.toString(deck.nCards()));
-
 
             // Dealer estourou
             if(dealer.getPoints() > 21){
@@ -484,6 +505,8 @@ public class mainScreen extends javax.swing.JFrame {
         BET.setEnabled(true);
         WIN.setVisible(false);
         LOSE.setVisible(false);
+
+        resetCardIcons();
     }//GEN-LAST:event_NextActionPerformed
 
     private void winGame(){
