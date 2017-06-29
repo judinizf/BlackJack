@@ -32,7 +32,7 @@ public class Hand{
   	}*/
 
   	public boolean removeAll(){
-            this.hand = new Hand();
+            this.hand = new Vector();
             return true;
         }
         
