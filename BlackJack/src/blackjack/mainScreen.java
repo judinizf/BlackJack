@@ -1,17 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Nome: Julia Diniz Ferreira
+ *Nusp: 9364865
+ * 
+ *Nome: Vinicius do Nascimento Fontenele
+ *Nusp: 9293651
  */
+
 package blackjack;
 
 import java.util.Vector;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author juvest
- */
 public class mainScreen extends javax.swing.JFrame {
 
     /**
@@ -23,8 +22,7 @@ public class mainScreen extends javax.swing.JFrame {
     private int dificuldade;
     private int bet;
     private boolean firstbet = true;
-    //Hand hand;
-
+   
     private static final int[] BETS = {0, 10, 25, 50, 100};
     
     public mainScreen(int dificuldade) {
@@ -33,7 +31,7 @@ public class mainScreen extends javax.swing.JFrame {
         dealer = new Dealer();
         deck = new Deck(dificuldade);
         deck.shuffleDeck();
-        
+                
         initComponents();
         
         WIN.setVisible(false);
@@ -424,6 +422,8 @@ public class mainScreen extends javax.swing.JFrame {
 
         //bet = BET.getSelectedIndex() + 1;
         bet = BETS[BET.getSelectedIndex()];
+
+        //depois disso o botao de BET nao pode mais ser clicado
         if(bet <= player.getMoney()){
 
             // Da as maos iniciais

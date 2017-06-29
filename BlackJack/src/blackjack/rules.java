@@ -1,14 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Nome: Julia Diniz Ferreira
+ *Nusp: 9364865
+ * 
+ *Nome: Vinicius do Nascimento Fontenele
+ *Nusp: 9293651
  */
+
 package blackjack;
 
-/**
- *
- * @author juvest
- */
 public class rules extends javax.swing.JFrame {
 
     /**

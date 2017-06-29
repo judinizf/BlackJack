@@ -1,3 +1,11 @@
+/*
+ *Nome: Julia Diniz Ferreira
+ *Nusp: 9364865
+ * 
+ *Nome: Vinicius do Nascimento Fontenele
+ *Nusp: 9293651
+ */
+
 package blackjack;
 
 import java.util.*;
@@ -50,7 +58,7 @@ public class Deck{
         
         Vector<Card> phand = p.getHand();
         Vector<Card> dhand = d.getHand();
-        
+                
         for(int i=0; i<phand.size(); i++){
             for(int j=0; j<count; j++){
                 if(phand.elementAt(i).getValue() == deck[j].getValue() && 
@@ -82,15 +90,10 @@ public class Deck{
                 }
             }
         }
-        
+                
         return deck;
     }
     
-    /*@Override
-    public String toString(){
-        return null;
-    }*/
-
     public Card buyCard(){
         return new Card(this.deck[top++]);
     }

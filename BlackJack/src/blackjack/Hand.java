@@ -1,3 +1,11 @@
+/*
+ *Nome: Julia Diniz Ferreira
+ *Nusp: 9364865
+ * 
+ *Nome: Vinicius do Nascimento Fontenele
+ *Nusp: 9293651
+ */
+
 package blackjack;
 
 import java.util.Vector;

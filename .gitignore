@@ -4,4 +4,4 @@ BlackJack/nbproject/
 *.class
 *.zip
 *.tar*
-
+/BlackJack/dist/
