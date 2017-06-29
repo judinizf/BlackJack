@@ -426,13 +426,6 @@ public class mainScreen extends javax.swing.JFrame {
         //depois disso o botao de BET nao pode mais ser clicado
         if(bet <= player.getMoney()){
 
-            // Da as maos iniciais
-            player.initialHand(player, dealer);
-            PlayerPoints.setText(Integer.toString(player.getPoints()));
-
-            dealer.initialHand(player, dealer);
-            DealerPoints.setText(Integer.toString(dealer.getVisiblePoints()));
-            
             // Inicializa textos da interface 
             PBet.setText(Integer.toString(bet));
             NDeck.setText(Integer.toString(deck.nCards()));
@@ -443,6 +436,17 @@ public class mainScreen extends javax.swing.JFrame {
             Stop.setEnabled(true);
             Surrender.setEnabled((firstbet = true));
             BET.setEnabled(false);
+
+            // Da as maos iniciais
+            player.initialHand(player, dealer);
+            PlayerPoints.setText(Integer.toString(player.getPoints()));
+
+            // If initial hand returns true, dealer already has a blackjack, end game
+            if(dealer.initialHand(player, dealer)){
+                lostGame();
+            }
+
+            DealerPoints.setText(Integer.toString(dealer.getVisiblePoints()));
 
             // Coloca as cartas na interface
             updateCardIcon();

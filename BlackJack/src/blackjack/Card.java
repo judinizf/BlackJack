@@ -72,8 +72,6 @@ public class Card {
             break;
         }
 
-        System.out.println("[DEBUG]: IS BACK: " + (isBack ? "TRUE" : "FALSE"));
-
         return (s + Integer.toString(this.cardValue));
     }
     

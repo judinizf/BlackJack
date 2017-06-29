@@ -24,8 +24,8 @@ public class Dealer {
         return true;
     }
     
-    public void initialHand(Player p, Dealer d){
-        handAux2.newHand(p, d, true);
+    public boolean initialHand(Player p, Dealer d){
+        return handAux2.newHand(p, d, true);
     }
     
     public void buyCard(Player p, Dealer d){
