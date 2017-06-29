@@ -27,10 +27,10 @@ public class mainScreen extends javax.swing.JFrame {
     
     public mainScreen(int dificuldade) {
         this.dificuldade = dificuldade;
-        this.firstbet = true;
         player = new Player();
         dealer = new Dealer();
-        deck = new Deck(dificuldade);        
+        deck = new Deck(dificuldade);
+        deck.shuffleDeck();
         initComponents();
     }
 
@@ -48,14 +48,29 @@ public class mainScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        PlayerCards = new javax.swing.JPanel();
+        PCard1 = new javax.swing.JLabel();
+        PCard2 = new javax.swing.JLabel();
+        PCard3 = new javax.swing.JLabel();
+        PCard4 = new javax.swing.JLabel();
+        PCard5 = new javax.swing.JLabel();
+        PCard6 = new javax.swing.JLabel();
+        PCard7 = new javax.swing.JLabel();
+        DealerCards = new javax.swing.JPanel();
+        DCard1 = new javax.swing.JLabel();
+        DCard2 = new javax.swing.JLabel();
+        DCard3 = new javax.swing.JLabel();
+        DCard4 = new javax.swing.JLabel();
+        DCard5 = new javax.swing.JLabel();
+        DCard6 = new javax.swing.JLabel();
+        DCard7 = new javax.swing.JLabel();
         Buy = new javax.swing.JButton();
         Stop = new javax.swing.JButton();
         Double = new javax.swing.JButton();
         Surrender = new javax.swing.JButton();
         BET = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        PlayerPoints = new javax.swing.JLabel();
+        DealerPoints = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -64,17 +79,32 @@ public class mainScreen extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.white);
 
-        jPanel1.setBackground(new java.awt.Color(45, 105, 57));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Player", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 18), new java.awt.Color(1, 1, 1))); // NOI18N
-        jPanel1.setForeground(new java.awt.Color(51, 117, 191));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        PlayerCards.setBackground(new java.awt.Color(45, 105, 57));
+        PlayerCards.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Player", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 18), new java.awt.Color(1, 1, 1))); // NOI18N
+        PlayerCards.setForeground(new java.awt.Color(51, 117, 191));
+        PlayerCards.setLayout(new java.awt.GridBagLayout());
+        PlayerCards.add(PCard1, new java.awt.GridBagConstraints());
+        PlayerCards.add(PCard2, new java.awt.GridBagConstraints());
+        PlayerCards.add(PCard3, new java.awt.GridBagConstraints());
+        PlayerCards.add(PCard4, new java.awt.GridBagConstraints());
+        PlayerCards.add(PCard5, new java.awt.GridBagConstraints());
+        PlayerCards.add(PCard6, new java.awt.GridBagConstraints());
+        PlayerCards.add(PCard7, new java.awt.GridBagConstraints());
 
-        jPanel2.setBackground(new java.awt.Color(45, 105, 57));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dealer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 18), new java.awt.Color(1, 1, 1))); // NOI18N
-        jPanel2.setForeground(new java.awt.Color(0, 42, 8));
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        DealerCards.setBackground(new java.awt.Color(45, 105, 57));
+        DealerCards.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dealer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 18), new java.awt.Color(1, 1, 1))); // NOI18N
+        DealerCards.setForeground(new java.awt.Color(0, 42, 8));
+        DealerCards.setLayout(new java.awt.GridBagLayout());
+        DealerCards.add(DCard1, new java.awt.GridBagConstraints());
+        DealerCards.add(DCard2, new java.awt.GridBagConstraints());
+        DealerCards.add(DCard3, new java.awt.GridBagConstraints());
+        DealerCards.add(DCard4, new java.awt.GridBagConstraints());
+        DealerCards.add(DCard5, new java.awt.GridBagConstraints());
+        DealerCards.add(DCard6, new java.awt.GridBagConstraints());
+        DealerCards.add(DCard7, new java.awt.GridBagConstraints());
 
         Buy.setText("Buy");
+        Buy.setEnabled(false);
         Buy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuyActionPerformed(evt);
@@ -82,6 +112,7 @@ public class mainScreen extends javax.swing.JFrame {
         });
 
         Stop.setText("Stop");
+        Stop.setEnabled(false);
         Stop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StopActionPerformed(evt);
@@ -89,6 +120,7 @@ public class mainScreen extends javax.swing.JFrame {
         });
 
         Double.setText("Double");
+        Double.setEnabled(false);
         Double.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DoubleActionPerformed(evt);
@@ -96,6 +128,7 @@ public class mainScreen extends javax.swing.JFrame {
         });
 
         Surrender.setText("Surrender");
+        Surrender.setEnabled(false);
         Surrender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SurrenderActionPerformed(evt);
@@ -109,48 +142,51 @@ public class mainScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        jLabel1.setText("jLabel1");
+        PlayerPoints.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        PlayerPoints.setText("0");
+
+        DealerPoints.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        DealerPoints.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(319, 398, Short.MAX_VALUE)
+                .addComponent(Buy)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Stop)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Double)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Surrender)
+                .addGap(7, 7, 7)
+                .addComponent(BET, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(85, 319, Short.MAX_VALUE)
-                            .addComponent(Buy)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(Stop)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(Double)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(Surrender)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BET, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(14, 14, 14))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap(240, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(73, 319, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(63, 63, 63))
+                    .addComponent(DealerCards, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PlayerCards, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DealerPoints)
+                            .addComponent(PlayerPoints))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(DealerPoints)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(DealerCards, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(PlayerPoints)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PlayerCards, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Buy)
                     .addComponent(Stop)
@@ -174,8 +210,11 @@ public class mainScreen extends javax.swing.JFrame {
 
     private void buyCard() throws Exception{
         player.buyCard();
+        PlayerPoints.setText(Integer.toString(player.getPoints()));
         //caso passe das duas primeiras cartas, deixa o botao de double nao clicavel
-        if(player.getPoints() > 21){
+
+        // adiciona a carta na interface
+        if(player.getPoints()>21){
             throw new Exception("Mão Estourada");
         }
     }
@@ -183,11 +222,15 @@ public class mainScreen extends javax.swing.JFrame {
     private void BETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BETActionPerformed
         //bet = BET.getSelectedIndex() + 1;
         bet = BET.getSelectedIndex();
+        System.out.println("bet = " + bet);
         //depois disso o botao de BET nao pode mais ser clicado
         //try catch
         if(bet < player.getMoney()){
-            player.loseMoney(bet);
             player.initialHand();
+            PlayerPoints.setText(Integer.toString(player.getPoints()));
+            // Coloca as cartas na interface
+            //PlayerCards.setText(player.getCards());
+            System.out.println("V=");
         }
         
     }//GEN-LAST:event_BETActionPerformed
@@ -197,6 +240,19 @@ public class mainScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         // Aqui tera q parar a vez do jogador e fazer a vez do dealer
+        // botoes do jogador deixa de ser clicavel
+        if(/*dealer ja tem mais pontos*/){
+            // Dealer ganha
+        }else if{
+            while(/*dealer com menos pontos q o jogadr*/){
+                // dealer compra carta
+            }
+            // Verifica se o dealer esta estourado ou nao.
+            // se o dealer estourou jogador ganha
+            //jogador ganha o money
+            // se nao, dealer ganha
+            // LOST GAME
+
         while(dealer.getPoints() < player.getPoints()){
             dealer.buyCard();
         }
@@ -229,7 +285,8 @@ public class mainScreen extends javax.swing.JFrame {
 
     private void lostGame(){
         player.removeHand();
-        //dealer.removeHand();
+        dealer.removeHand();
+        player.loseMoney(bet);
     }
     
     /**
@@ -270,12 +327,27 @@ public class mainScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> BET;
     private javax.swing.JButton Buy;
+    private javax.swing.JLabel DCard1;
+    private javax.swing.JLabel DCard2;
+    private javax.swing.JLabel DCard3;
+    private javax.swing.JLabel DCard4;
+    private javax.swing.JLabel DCard5;
+    private javax.swing.JLabel DCard6;
+    private javax.swing.JLabel DCard7;
+    private javax.swing.JPanel DealerCards;
+    private javax.swing.JLabel DealerPoints;
     private javax.swing.JButton Double;
+    private javax.swing.JLabel PCard1;
+    private javax.swing.JLabel PCard2;
+    private javax.swing.JLabel PCard3;
+    private javax.swing.JLabel PCard4;
+    private javax.swing.JLabel PCard5;
+    private javax.swing.JLabel PCard6;
+    private javax.swing.JLabel PCard7;
+    private javax.swing.JPanel PlayerCards;
+    private javax.swing.JLabel PlayerPoints;
     private javax.swing.JButton Stop;
     private javax.swing.JButton Surrender;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

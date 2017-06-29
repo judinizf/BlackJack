@@ -33,7 +33,8 @@ public class Hand{
         else throw new Exception();
   	}*/
 
-  	public boolean removeAll(){
+    public boolean removeAll(){
+
         this.hand = new Vector();
         this.points = 0;
         return true;
@@ -42,5 +43,4 @@ public class Hand{
     public int getPoints(){
         return this.points;
     }
-
 }

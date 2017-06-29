@@ -41,4 +41,8 @@ public class Card {
     public int getValue(){
         return cardValue;
     }
+    
+    /*public String getCardString(){
+        switch(this.cardValue)
+    }*/
 }

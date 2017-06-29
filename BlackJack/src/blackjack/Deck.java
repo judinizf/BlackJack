@@ -22,6 +22,7 @@ public class Deck{
         this.nCards = DECK_SIZE*deckNum;
         this.deck = new Card[nCards];
         this.top = 0;
+        
         // Iterate through all decks from 1 to 8, inclusive
         for (int i = 0; i < this.deckNum; i++) {
             for (int j = 1; j <= SUIT_SIZE; j++) {
@@ -40,6 +41,10 @@ public class Deck{
         top = 0;
 	deck = (Card[]) list.toArray();
         return deck;
+    }
+    
+    public void printDeck(){
+        
     }
 
     public Card buyCard(){
