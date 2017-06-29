@@ -48,4 +48,8 @@ public class Deck{
     public Card buyCard(){
         return this.deck[top++];
     }
+    
+    public int nCards(){
+        return (this.count-this.top);
+    }
 }

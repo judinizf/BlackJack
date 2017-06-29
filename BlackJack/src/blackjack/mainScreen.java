@@ -32,6 +32,7 @@ public class mainScreen extends javax.swing.JFrame {
         deck = new Deck(dificuldade);
         deck.shuffleDeck();
         initComponents();
+        NDeck.setText(Integer.toString(dificuldade*52));
     }
 
     private mainScreen() {
@@ -78,6 +79,8 @@ public class mainScreen extends javax.swing.JFrame {
         WIN = new javax.swing.JLabel();
         LOSE = new javax.swing.JLabel();
         Next = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        NDeck = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -165,19 +168,18 @@ public class mainScreen extends javax.swing.JFrame {
 
         WIN.setFont(new java.awt.Font("Noto Sans", 0, 24)); // NOI18N
         WIN.setText("WIN");
-        WIN.setVisible(false);
 
         LOSE.setFont(new java.awt.Font("Noto Sans", 0, 24)); // NOI18N
         LOSE.setText("LOSE");
-        LOSE.setVisible(false);
 
         Next.setText("Next");
-        Next.setVisible(false);
         Next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NextActionPerformed(evt);
             }
         });
+
+        jLabel3.setText("Deck:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,14 +216,21 @@ public class mainScreen extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(LOSE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PMoney)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PBet)
-                        .addGap(216, 216, 216))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(PMoney)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(PBet)
+                                .addGap(216, 216, 216))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(NDeck)
+                                .addGap(45, 45, 45))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,9 +245,15 @@ public class mainScreen extends javax.swing.JFrame {
                                 .addGap(0, 20, Short.MAX_VALUE)
                                 .addComponent(PlayerPoints))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(WIN)
-                                    .addComponent(LOSE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(WIN)
+                                        .addComponent(LOSE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel3)
+                                            .addComponent(NDeck))))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -281,6 +296,7 @@ public class mainScreen extends javax.swing.JFrame {
 
         player.buyCard();
         PlayerPoints.setText(Integer.toString(player.getPoints()));
+        NDeck.setText(Integer.toString(deck.nCards()));
         //caso passe das duas primeiras cartas, deixa o botao de double nao clicavel
 
         // adiciona a carta na interface
@@ -300,6 +316,7 @@ public class mainScreen extends javax.swing.JFrame {
             dealer.initialHand();
             DealerPoints.setText(Integer.toString(dealer.getPoints()));
             PBet.setText(Integer.toString(bet));
+            NDeck.setText(Integer.toString(deck.nCards()));
             // Coloca as cartas na interface
             //PlayerCards.setText(player.getCards());
             Buy.setEnabled(true);
@@ -319,6 +336,7 @@ public class mainScreen extends javax.swing.JFrame {
         while(dealer.getPoints() < player.getPoints()){
             dealer.buyCard();
             DealerPoints.setText(Integer.toString(dealer.getPoints()));
+            NDeck.setText(Integer.toString(deck.nCards()));
         }
         // Verifica se o dealer esta estourado ou nao.
         if(dealer.getPoints() > 21 || dealer.getPoints() < player.getPoints())
@@ -365,14 +383,8 @@ public class mainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_NextActionPerformed
 
     private void winGame(){
-<<<<<<< HEAD
         finishGame(true);
         WIN.setVisible(true);
-=======
-        player.winMoney(bet);
-        player.removeHand();
-        dealer.removeHand();
->>>>>>> 87a8fa1d7b7d62370a5a3d9436f933ed3083d9c4
     }
 
     private void lostGame(){
@@ -444,6 +456,7 @@ public class mainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel DealerPoints;
     private javax.swing.JButton Double;
     private javax.swing.JLabel LOSE;
+    private javax.swing.JLabel NDeck;
     private javax.swing.JButton Next;
     private javax.swing.JLabel PBet;
     private javax.swing.JLabel PCard1;
@@ -461,6 +474,7 @@ public class mainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel WIN;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
