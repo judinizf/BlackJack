@@ -3,7 +3,6 @@ package blackjack;
 import java.util.*;
 import java.lang.*;
 
-
 public class Deck{
 
     private Card[] deck;
@@ -41,7 +40,8 @@ public class Deck{
         return deck;
     }
     
-    public void printDeck(){
+    @Override
+    public void toString(){
         
     }
 

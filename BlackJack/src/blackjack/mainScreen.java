@@ -281,13 +281,22 @@ public class mainScreen extends javax.swing.JFrame {
         
         // Dealer compra cartas ate ter mais pontos do que o player
         while(dealer.getPoints() < player.getPoints()){
+
             dealer.buyCard();
+
+            if(dealer.getPoints() > 21){
+                winGame();
+                return;
+            }
         }
         // Verifica se o dealer esta estourado ou nao.
-        if(dealer.getPoints() > 21 || dealer.getPoints() < player.getPoints())
-            winGame();
-        else // Em caso de empate, o dealer ganha
+        if(dealer.getPoints() == player.getPoints()){
             lostGame();
+            return;
+        }
+
+        lostGame();
+        return;
         
     }//GEN-LAST:event_StopActionPerformed
    
