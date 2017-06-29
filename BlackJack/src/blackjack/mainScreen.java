@@ -426,7 +426,7 @@ public class mainScreen extends javax.swing.JFrame {
         //depois disso o botao de BET nao pode mais ser clicado
         if(bet <= player.getMoney()){
 
-            // Inicializa textos da interface 
+            // Set texts
             PBet.setText(Integer.toString(bet));
             NDeck.setText(Integer.toString(deck.nCards()));
 
@@ -439,12 +439,14 @@ public class mainScreen extends javax.swing.JFrame {
 
             // Da as maos iniciais
             player.initialHand(player, dealer);
+            player.checkA();
             PlayerPoints.setText(Integer.toString(player.getPoints()));
 
             // If initial hand returns true, dealer already has a blackjack, end game
             if(dealer.initialHand(player, dealer)){
                 lostGame();
             }
+            dealer.checkA();
 
             DealerPoints.setText(Integer.toString(dealer.getVisiblePoints()));
 

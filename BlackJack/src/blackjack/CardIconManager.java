@@ -10,7 +10,6 @@ package blackjack;
 
 import javax.swing.ImageIcon;
 
-
 // Auxiliar enums for getting card names
 enum CardValue{
     ace,
@@ -42,9 +41,6 @@ public class CardIconManager {
 
 	public static void loadImages(){
 
-		Image im = startImage.getImage(); // transform it 
-		startImage = new ImageIcon(im.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH));  // transform it back
-		
 		// Get enums as arrays of strings to create path
 		CardValue[] cv = CardValue.values();
 		CardSuit[] cs = CardSuit.values();

@@ -68,4 +68,8 @@ public class Player {
     public Vector<Card> getHand(){
         return handAux.getHand();
     }
+    
+    public void checkA(){
+        handAux.checkA();
+    }
 }

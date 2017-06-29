@@ -27,7 +27,8 @@ public class Hand{
         hand.addElement(mainScreen.deck.buyCard());
         points += ((Card)hand.elementAt(1)).getValue();
         */
-        buyCard(p,d);
+        // buyCard(p,d);
+        hand.add(new Card(1, 1));
         buyCard(p,d);
 
         // Check for Ace or 10, J, Q, K
@@ -127,5 +128,19 @@ public class Hand{
     
     public Vector<Card> getHand(){
         return this.hand;
+    }
+    
+    public void checkA(){
+        if(hand.size() == 2){
+            if(hand.elementAt(0).getValue() == 1 && hand.elementAt(1).getValue() == 10){
+                hand.elementAt(0).setValue(11);
+                points += 10;
+            }
+            if(hand.elementAt(0).getValue() == 10 && hand.elementAt(1).getValue() == 1){
+                hand.elementAt(1).setValue(11);
+                points += 10;
+            }
+            
+        }
     }
 }
