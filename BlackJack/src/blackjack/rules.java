@@ -79,7 +79,6 @@ public class rules extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
-        // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_BackActionPerformed
 

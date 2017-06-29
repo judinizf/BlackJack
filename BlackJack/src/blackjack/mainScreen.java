@@ -490,7 +490,7 @@ public class mainScreen extends javax.swing.JFrame {
    
         
     private void DoubleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoubleActionPerformed
-        // TODO add your handling code here:
+
         bet *= 2;
         PBet.setText(Integer.toString(bet));
         Double.setEnabled((firstbet = false));
