@@ -165,11 +165,19 @@ public class mainScreen extends javax.swing.JFrame {
 
         WIN.setFont(new java.awt.Font("Noto Sans", 0, 24)); // NOI18N
         WIN.setText("WIN");
+        WIN.setVisible(false);
 
         LOSE.setFont(new java.awt.Font("Noto Sans", 0, 24)); // NOI18N
         LOSE.setText("LOSE");
+        LOSE.setVisible(false);
 
         Next.setText("Next");
+        Next.setVisible(false);
+        Next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -333,6 +341,23 @@ public class mainScreen extends javax.swing.JFrame {
         // LOST GAME
     }//GEN-LAST:event_SurrenderActionPerformed
 
+    private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
+        // TODO add your handling code here:
+        PlayerPoints.setText(Integer.toString(player.getPoints()));
+        DealerPoints.setText(Integer.toString(player.getPoints()));
+        PBet.setText(Integer.toString(bet));
+        PMoney.setText(Integer.toString(player.getMoney()));
+        
+        Next.setVisible(false);
+        Buy.setEnabled(false);
+        Double.setEnabled(false);
+        Stop.setEnabled(false);
+        Surrender.setEnabled(false);
+        BET.setEnabled(true);
+        WIN.setVisible(false);
+        LOSE.setVisible(false);
+    }//GEN-LAST:event_NextActionPerformed
+
     private void winGame(){
         finishGame(true);
         WIN.setVisible(true);
@@ -350,16 +375,12 @@ public class mainScreen extends javax.swing.JFrame {
         player.removeHand();
         dealer.removeHand();
         bet = 0;
-        PlayerPoints.setText(Integer.toString(player.getPoints()));
-        DealerPoints.setText(Integer.toString(player.getPoints()));
-        PBet.setText(Integer.toString(bet));
-        PMoney.setText(Integer.toString(player.getMoney()));
-        
+        Next.setVisible(true);
         Buy.setEnabled(false);
         Double.setEnabled(false);
         Stop.setEnabled(false);
         Surrender.setEnabled(false);
-        BET.setEnabled(true);
+        BET.setEnabled(false);
     }
     
     /**
