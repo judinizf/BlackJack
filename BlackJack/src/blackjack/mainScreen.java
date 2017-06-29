@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package blackjack;
-import blackjack.*;
+
 import java.util.Vector;
 /**
  *

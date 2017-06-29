@@ -1,6 +1,5 @@
 package blackjack;
 
-import blackjack.*;
 import java.util.*;
 import java.lang.*;
 
