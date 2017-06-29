@@ -28,6 +28,7 @@ public class CardIconManager {
 	// Get static references for all cards images
 	public static ImageIcon[][] cards = 
 		new ImageIcon[Deck.SUIT_SIZE][Deck.CARD_SIZE];
+	public static ImageIcon back = new ImageIcon();
 
 	public static void loadImages(){
 		

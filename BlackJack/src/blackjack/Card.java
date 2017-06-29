@@ -11,8 +11,10 @@ package blackjack;
  */
 
 public class Card {
+
     private int suit;
     private int cardValue;
+    private int isBack = false;
     
     public Card(int cardValue, int suit){
 
