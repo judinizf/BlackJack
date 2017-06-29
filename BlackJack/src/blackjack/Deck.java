@@ -15,7 +15,7 @@ public class Deck{
     public final int CARD_SIZE = 13;
     public final int SUIT_SIZE = 4;
     
-    private int cont = 0;
+    private int count = 0;
 
     public Deck(int deckNum){
         this.deckNum = deckNum;
@@ -27,7 +27,7 @@ public class Deck{
         for (int i = 0; i < this.deckNum; i++) {
             for (int j = 1; j <= SUIT_SIZE; j++) {
                 for (int k = 1; k <= CARD_SIZE; k++) {
-                    deck[cont++] = new Card(k,j);
+                    deck[count++] = new Card(k,j);
                 }
             }
         }
