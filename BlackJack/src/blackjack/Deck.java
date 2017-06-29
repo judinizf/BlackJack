@@ -32,12 +32,24 @@ public class Deck{
         }
     }
     
-    public Card[] shuffleDeck(){
+    /*public Card[] shuffleDeck(){
         List<Card> list = Arrays.asList(deck);
         Collections.shuffle(list);
         top = 0;
 	deck = (Card[]) list.toArray();
         return deck;
+    }*/
+    
+    public Card[] shuffleDeck(Player p, Dealer d){
+       List<Card> list = Arrays.asList(deck);
+        Collections.shuffle(list);
+        top = 0;
+	deck = (Card[]) list.toArray();
+        
+        Vector<Card> phand = p.getHand();
+        Vector<Card> dhand = d.getHand();
+        return deck;
+        
     }
     
     /*@Override
@@ -46,7 +58,7 @@ public class Deck{
     }*/
 
     public Card buyCard(){
-        return this.deck[top++];
+        return new Card(this.deck[top++]);
     }
     
     public int nCards(){

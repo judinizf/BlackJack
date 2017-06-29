@@ -35,4 +35,8 @@ public class Dealer {
     public void removeHand(){
         handAux2.removeAll();
     }
+    
+    public Vector<Card> getHand(){
+        return handAux2.getHand();
+    }
 }

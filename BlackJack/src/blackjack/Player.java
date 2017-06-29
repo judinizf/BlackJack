@@ -59,4 +59,8 @@ public class Player {
     public void winMoney(int money){
         this.money += money;
     }
+    
+    public Vector<Card> getHand(){
+        return handAux.getHand();
+    }
 }

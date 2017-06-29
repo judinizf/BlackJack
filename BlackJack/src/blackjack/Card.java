@@ -53,6 +53,11 @@ public class Card {
     	this.suit = suit;
     }
     
+    public Card(Card c){
+        this.cardValue = c.cardValue;
+        this.suit = c.suit;
+    }
+    
     public int getValue(){
         return cardValue;
     }
