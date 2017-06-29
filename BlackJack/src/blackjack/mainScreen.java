@@ -268,30 +268,37 @@ public class mainScreen extends javax.swing.JFrame {
         try{
             buyCard();
         }catch(Exception e){
-            lostGame();
+            //lostGame();
+            e.printStackTrace();
         }
     }//GEN-LAST:event_BuyActionPerformed
 
     private void buyCard() throws Exception{
+        
+        if(player.getPoints()>21){
+            throw new Exception("Mão Estourada");
+        }
+
         player.buyCard();
         PlayerPoints.setText(Integer.toString(player.getPoints()));
         //caso passe das duas primeiras cartas, deixa o botao de double nao clicavel
 
         // adiciona a carta na interface
-        if(player.getPoints()>21){
-            throw new Exception("Mão Estourada");
+        if(player.getPoints() > 21){
+            lostGame();
         }
     }
     
     private void BETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BETActionPerformed
         //bet = BET.getSelectedIndex() + 1;
         bet = BETS[BET.getSelectedIndex()];
-        System.out.println("bet = " + bet);
         //depois disso o botao de BET nao pode mais ser clicado
         //try catch
         if(bet < player.getMoney()){
             player.initialHand();
             PlayerPoints.setText(Integer.toString(player.getPoints()));
+            dealer.initialHand();
+            DealerPoints.setText(Integer.toString(dealer.getPoints()));
             PBet.setText(Integer.toString(bet));
             // Coloca as cartas na interface
             //PlayerCards.setText(player.getCards());
@@ -306,10 +313,9 @@ public class mainScreen extends javax.swing.JFrame {
 
     private void StopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StopActionPerformed
         
+
         // TODO add your handling code here:
-        dealer.initialHand();
-        DealerPoints.setText(Integer.toString(dealer.getPoints()));
-       
+
         while(dealer.getPoints() < player.getPoints()){
             dealer.buyCard();
             DealerPoints.setText(Integer.toString(dealer.getPoints()));
@@ -359,8 +365,14 @@ public class mainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_NextActionPerformed
 
     private void winGame(){
+<<<<<<< HEAD
         finishGame(true);
         WIN.setVisible(true);
+=======
+        player.winMoney(bet);
+        player.removeHand();
+        dealer.removeHand();
+>>>>>>> 87a8fa1d7b7d62370a5a3d9436f933ed3083d9c4
     }
 
     private void lostGame(){

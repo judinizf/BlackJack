@@ -13,12 +13,9 @@ public class Hand{
     }
 
     public void newHand (){
-        System.out.println("[DEBUG]: hand size: " + this.hand.size());
         hand.addElement(mainScreen.deck.buyCard());
-        System.out.println("[DEBUG]: hand size: " + this.hand.size());
         points += ((Card)hand.elementAt(0)).getValue();
-        Card c = mainScreen.deck.buyCard();
-        hand.addElement(c);
+        hand.addElement(mainScreen.deck.buyCard());
         points += ((Card)hand.elementAt(1)).getValue();
     }
     
@@ -35,7 +32,7 @@ public class Hand{
 
     public boolean removeAll(){
 
-        this.hand = new Vector();
+        this.hand = new Vector<Card>();
         this.points = 0;
         return true;
     }
