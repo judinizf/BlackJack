@@ -22,15 +22,12 @@ public class Deck{
         this.nCards = DECK_SIZE*deckNum;
         this.deck = new Card[nCards];
         this.top = 0;
-<<<<<<< HEAD
-                
-=======
->>>>>>> 748ee728367f8d006f06e3401d471fb655eccf7f
+        
         // Iterate through all decks from 1 to 8, inclusive
         for (int i = 0; i < this.deckNum; i++) {
             for (int j = 1; j <= SUIT_SIZE; j++) {
                 for (int k = 1; k <= CARD_SIZE; k++) {
-                    deck[cont] = new Card(k,j);
+                    deck[cont++] = new Card(k,j);
                 }
             }
         }

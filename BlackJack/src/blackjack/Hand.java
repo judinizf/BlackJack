@@ -30,20 +30,8 @@ public class Hand{
         else throw new Exception();
   	}*/
 
-  	public boolean removeAll(){
-<<<<<<< HEAD
-            this.hand = new Vector();
-            return true;
-        }
-        
-        public int getPoints(){
-            return this.points;
-        }
-        
-        /*public String getCards(){
-            
-        }*/
-=======
+    public boolean removeAll(){
+
         this.hand = new Vector();
         this.points = 0;
         return true;
@@ -52,6 +40,4 @@ public class Hand{
     public int getPoints(){
         return this.points;
     }
->>>>>>> 748ee728367f8d006f06e3401d471fb655eccf7f
-
 }

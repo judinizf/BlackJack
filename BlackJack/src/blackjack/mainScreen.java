@@ -29,7 +29,8 @@ public class mainScreen extends javax.swing.JFrame {
         this.dificuldade = dificuldade;
         player = new Player();
         dealer = new Dealer();
-        deck = new Deck(dificuldade);        
+        deck = new Deck(dificuldade);
+        deck.shuffleDeck();
         initComponents();
     }
 
@@ -103,6 +104,7 @@ public class mainScreen extends javax.swing.JFrame {
         DealerCards.add(DCard7, new java.awt.GridBagConstraints());
 
         Buy.setText("Buy");
+        Buy.setEnabled(false);
         Buy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuyActionPerformed(evt);
@@ -110,6 +112,7 @@ public class mainScreen extends javax.swing.JFrame {
         });
 
         Stop.setText("Stop");
+        Stop.setEnabled(false);
         Stop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StopActionPerformed(evt);
@@ -117,6 +120,7 @@ public class mainScreen extends javax.swing.JFrame {
         });
 
         Double.setText("Double");
+        Double.setEnabled(false);
         Double.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DoubleActionPerformed(evt);
@@ -124,6 +128,7 @@ public class mainScreen extends javax.swing.JFrame {
         });
 
         Surrender.setText("Surrender");
+        Surrender.setEnabled(false);
         Surrender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SurrenderActionPerformed(evt);
@@ -207,12 +212,9 @@ public class mainScreen extends javax.swing.JFrame {
         player.buyCard();
         PlayerPoints.setText(Integer.toString(player.getPoints()));
         //caso passe das duas primeiras cartas, deixa o botao de double nao clicavel
-<<<<<<< HEAD
+
         // adiciona a carta na interface
         if(player.getPoints()>21){
-=======
-        if(player.getPoints() > 21){
->>>>>>> 748ee728367f8d006f06e3401d471fb655eccf7f
             throw new Exception("Mão Estourada");
         }
     }
@@ -225,6 +227,7 @@ public class mainScreen extends javax.swing.JFrame {
         //try catch
         if(bet < player.getMoney()){
             player.initialHand();
+            PlayerPoints.setText(Integer.toString(player.getPoints()));
             // Coloca as cartas na interface
             //PlayerCards.setText(player.getCards());
             System.out.println("V=");
@@ -237,7 +240,6 @@ public class mainScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         // Aqui tera q parar a vez do jogador e fazer a vez do dealer
-<<<<<<< HEAD
         // botoes do jogador deixa de ser clicavel
         if(/*dealer ja tem mais pontos*/){
             // Dealer ganha
@@ -250,10 +252,9 @@ public class mainScreen extends javax.swing.JFrame {
             //jogador ganha o money
             // se nao, dealer ganha
             // LOST GAME
-=======
+
         while(dealer.getPoints() < player.getPoints()){
             dealer.buyCard();
->>>>>>> 748ee728367f8d006f06e3401d471fb655eccf7f
         }
         // Verifica se o dealer esta estourado ou nao.
         if(dealer.getPoints() > 21 || dealer.getPoints() < player.getPoints())

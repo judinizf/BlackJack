@@ -238,6 +238,7 @@
     <Component class="javax.swing.JButton" name="Buy">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buy"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuyActionPerformed"/>
@@ -246,6 +247,7 @@
     <Component class="javax.swing.JButton" name="Stop">
       <Properties>
         <Property name="text" type="java.lang.String" value="Stop"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StopActionPerformed"/>
@@ -254,6 +256,7 @@
     <Component class="javax.swing.JButton" name="Double">
       <Properties>
         <Property name="text" type="java.lang.String" value="Double"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DoubleActionPerformed"/>
@@ -262,6 +265,7 @@
     <Component class="javax.swing.JButton" name="Surrender">
       <Properties>
         <Property name="text" type="java.lang.String" value="Surrender"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SurrenderActionPerformed"/>
