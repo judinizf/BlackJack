@@ -1,14 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Nome: Julia Diniz Ferreira
+ *Nusp: 9364865
+ * 
+ *Nome: Vinicius do Nascimento Fontenele
+ *Nusp: 9293651
  */
+
 package blackjack;
 
-/**
- *
- * @author juvest
- */
 public class start extends javax.swing.JFrame {
 
     private int dificuldade = 1;
@@ -107,7 +106,6 @@ public class start extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DifficultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DifficultyActionPerformed
-        // TODO add your handling code here:
         dificuldade = Difficulty.getSelectedIndex() + 1;
     }//GEN-LAST:event_DifficultyActionPerformed
 

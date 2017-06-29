@@ -1,3 +1,11 @@
+/*
+ *Nome: Julia Diniz Ferreira
+ *Nusp: 9364865
+ * 
+ *Nome: Vinicius do Nascimento Fontenele
+ *Nusp: 9293651
+ */
+
 package blackjack;
 
 import java.util.Vector;
@@ -19,11 +27,7 @@ public class Dealer {
     public void initialHand(Player p, Dealer d){
         handAux2.newHand(p,d);
     }
-    /*
-    public void askCard(){
-        handAux2.buyCard();
-    }*/
-
+    
     public void buyCard(Player p, Dealer d){
         handAux2.buyCard(p,d);
     }
