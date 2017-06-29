@@ -1,6 +1,5 @@
 package blackjack;
 
-import blackjack.*;
 import java.util.Vector;
 
 public class Dealer {
@@ -20,12 +19,20 @@ public class Dealer {
     public void initialHand(){
         handAux2.newHand();
     }
-    
+    /*
     public void askCard(){
+        handAux2.buyCard();
+    }*/
+
+    public void buyCard(){
         handAux2.buyCard();
     }
     
     public int getPoints(){
         return this.handAux2.getPoints();
+    }
+
+    public void removeHand(){
+        handAux2.removeAll();
     }
 }

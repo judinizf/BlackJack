@@ -34,8 +34,8 @@ public class Card {
     */
     
     public Card(int cardValue, int suit){
-	this.cardValue = cardValue; 
-	this.suit = suit;
+    	this.cardValue = cardValue; 
+    	this.suit = suit;
     }
     
     public int getValue(){

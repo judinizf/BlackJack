@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package blackjack;
-import blackjack.*;
+
 import java.util.Vector;
 /**
  *
@@ -20,7 +20,10 @@ public class mainScreen extends javax.swing.JFrame {
     static Deck deck;
     private int dificuldade;
     private int bet;
+    private boolean firstbet;
     //Hand hand;
+
+    private static final int[] BETS = {0, 10, 25, 50, 100};
     
     public mainScreen(int dificuldade) {
         this.dificuldade = dificuldade;
@@ -204,14 +207,17 @@ public class mainScreen extends javax.swing.JFrame {
         player.buyCard();
         PlayerPoints.setText(Integer.toString(player.getPoints()));
         //caso passe das duas primeiras cartas, deixa o botao de double nao clicavel
+<<<<<<< HEAD
         // adiciona a carta na interface
         if(player.getPoints()>21){
+=======
+        if(player.getPoints() > 21){
+>>>>>>> 748ee728367f8d006f06e3401d471fb655eccf7f
             throw new Exception("Mão Estourada");
         }
     }
     
     private void BETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BETActionPerformed
-        // TODO add your handling code here:
         //bet = BET.getSelectedIndex() + 1;
         bet = BET.getSelectedIndex();
         System.out.println("bet = " + bet);
@@ -227,8 +233,11 @@ public class mainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_BETActionPerformed
 
     private void StopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StopActionPerformed
+        
         // TODO add your handling code here:
+        
         // Aqui tera q parar a vez do jogador e fazer a vez do dealer
+<<<<<<< HEAD
         // botoes do jogador deixa de ser clicavel
         if(/*dealer ja tem mais pontos*/){
             // Dealer ganha
@@ -241,7 +250,17 @@ public class mainScreen extends javax.swing.JFrame {
             //jogador ganha o money
             // se nao, dealer ganha
             // LOST GAME
+=======
+        while(dealer.getPoints() < player.getPoints()){
+            dealer.buyCard();
+>>>>>>> 748ee728367f8d006f06e3401d471fb655eccf7f
         }
+        // Verifica se o dealer esta estourado ou nao.
+        if(dealer.getPoints() > 21 || dealer.getPoints() < player.getPoints())
+            winGame();
+        else // Em caso de empate, o dealer ganha
+            lostGame();
+
     }//GEN-LAST:event_StopActionPerformed
 
     private void DoubleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoubleActionPerformed
@@ -256,6 +275,12 @@ public class mainScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         // LOST GAME
     }//GEN-LAST:event_SurrenderActionPerformed
+
+    private void winGame(){
+        player.winMoney(BETS[bet]);
+        player.removeHand();
+        dealer.removeHand();
+    }
 
     private void lostGame(){
         player.removeHand();
