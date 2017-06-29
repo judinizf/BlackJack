@@ -28,6 +28,8 @@ public class rules extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         Back = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,24 +43,35 @@ public class rules extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Objetivo\nA mão mais elevada no blackjack é um Ás e uma carta de 10 \npontos e é chamada justamente de blackjack. O jogador ganha se \na sua mão tiver mais pontos que a do dealer, sem ir acima de 21. \nAssim uma mão de 21 pontos é a mais elevada e é por isso que o \njogo é chamado às vezes de 21. Se o jogador ou o dealer forem\nacima de 21 perde automaticamente.\n\nJogadas\n- Parar: Se o jogador está satisfeito com sua mão e não quer \npedir mais cartas.\n- Pedir: Se o jogador desejar mais uma carta.\n- Dobrar: Se o jogador sentir que necessita de UMA e somente \nUMA carta adicional, então pode dobrar sua aposta e receber \nmais uma carta, boa ou ruim. Esta opção é oferecida somente \nnas duas primeiras cartas.\n- Rendição: Finalmente, o jogador tem a opção de rendição nas \nprimeiras DUAS cartas. Se o jogador não gostar das suas cartas\npode perder metade da aposta assim como suas cartas. ");
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(jLabel1)
-                .addContainerGap(163, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Back))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Back))
         );
 
@@ -108,5 +121,7 @@ public class rules extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
