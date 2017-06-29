@@ -13,9 +13,12 @@ public class Hand{
     }
 
     public void newHand (){
+        System.out.println("[DEBUG]: hand size: " + this.hand.size());
         hand.addElement(mainScreen.deck.buyCard());
+        System.out.println("[DEBUG]: hand size: " + this.hand.size());
         points += ((Card)hand.elementAt(0)).getValue();
-        hand.addElement(mainScreen.deck.buyCard());
+        Card c = mainScreen.deck.buyCard();
+        hand.addElement(c);
         points += ((Card)hand.elementAt(1)).getValue();
     }
     
