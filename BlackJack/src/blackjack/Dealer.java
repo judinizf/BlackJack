@@ -31,4 +31,8 @@ public class Dealer {
     public int getPoints(){
         return this.handAux2.getPoints();
     }
+
+    public void removeHand(){
+        handAux2.removeAll();
+    }
 }
