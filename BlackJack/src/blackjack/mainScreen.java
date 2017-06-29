@@ -373,14 +373,8 @@ public class mainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_NextActionPerformed
 
     private void winGame(){
-<<<<<<< HEAD
         finishGame(true);
         WIN.setVisible(true);
-=======
-        player.winMoney(bet);
-        player.removeHand();
-        dealer.removeHand();
->>>>>>> 87a8fa1d7b7d62370a5a3d9436f933ed3083d9c4
     }
 
     private void lostGame(){

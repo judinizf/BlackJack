@@ -40,10 +40,10 @@ public class Deck{
         return deck;
     }
     
-    @Override
-    public void toString(){
-        
-    }
+    /*@Override
+    public String toString(){
+        return null;
+    }*/
 
     public Card buyCard(){
         return this.deck[top++];
