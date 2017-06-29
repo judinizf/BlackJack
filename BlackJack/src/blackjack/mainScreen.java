@@ -20,7 +20,6 @@ public class mainScreen extends javax.swing.JFrame {
     static Deck deck;
     private int dificuldade;
     private int bet;
-    private boolean firstbet;
     //Hand hand;
     
     public mainScreen(int dificuldade) {
@@ -172,6 +171,7 @@ public class mainScreen extends javax.swing.JFrame {
 
     private void buyCard() throws Exception{
         player.buyCard();
+        //caso passe das duas primeiras cartas, deixa o botao de double nao clicavel
         if(player.getPoints()>21){
             throw new Exception("Mão Estourada");
         }
@@ -181,7 +181,7 @@ public class mainScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         //bet = BET.getSelectedIndex() + 1;
         bet = BET.getSelectedIndex();
-        // o q falta fazer, depois disso o botao de BET nao pode mais ser clicado
+        //depois disso o botao de BET nao pode mais ser clicado
         //try catch
         if(bet < player.getMoney()){
             player.loseMoney(bet);
@@ -192,10 +192,27 @@ public class mainScreen extends javax.swing.JFrame {
 
     private void StopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StopActionPerformed
         // TODO add your handling code here:
+        // Aqui tera q parar a vez do jogador e fazer a vez do dealer
+        if(/*dealer ja tem mais pontos*/){
+            // Dealer ganha
+        }else if{
+            while(/*dealer com menos pontos q o jogadr*/){
+                // dealer compra carta
+            }
+            // Verifica se o dealer esta estourado ou nao.
+            // se o dealer estourou jogador ganha
+            //jogador ganha o money
+            // se nao, dealer ganha
+            // LOST GAME
+        }
     }//GEN-LAST:event_StopActionPerformed
 
     private void DoubleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoubleActionPerformed
         // TODO add your handling code here:
+        bet *= 2;
+        //jogador perde o dinheiro(bet)
+        //jogador compra carta
+        //botao de comprar fica nao clicavel
     }//GEN-LAST:event_DoubleActionPerformed
 
     private void SurrenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SurrenderActionPerformed
