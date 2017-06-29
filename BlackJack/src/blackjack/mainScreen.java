@@ -31,7 +31,13 @@ public class mainScreen extends javax.swing.JFrame {
         dealer = new Dealer();
         deck = new Deck(dificuldade);
         deck.shuffleDeck();
+        
         initComponents();
+        
+        WIN.setVisible(false);
+        LOSE.setVisible(false);
+        Next.setVisible(false);
+
         NDeck.setText(Integer.toString(dificuldade*52));
     }
 
@@ -425,7 +431,7 @@ public class mainScreen extends javax.swing.JFrame {
         Surrender.setEnabled(false);
         BET.setEnabled(false);
         
-        if(player,getMoney() < 10){
+        if(player.getMoney() < 10){
             dispose();
             new start().setVisible(true);
         }
