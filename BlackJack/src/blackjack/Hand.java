@@ -27,13 +27,12 @@ public class Hand{
         hand.addElement(mainScreen.deck.buyCard());
         points += ((Card)hand.elementAt(1)).getValue();
         */
-        // buyCard(p,d);
-        hand.add(new Card(1, 1));
+        buyCard(p,d);
         buyCard(p,d);
 
         // Check for Ace or 10, J, Q, K
         Card c1 = hand.get(0);
-        Card c2 = hand.get(0);
+        Card c2 = hand.get(1);
 
         // Ace
         if(c1.getValue() == 1){
@@ -54,22 +53,27 @@ public class Hand{
     }
 
     public boolean newHand (Player p, Dealer d, boolean isDealerHand){
+
         buyCard(p,d);
         buyCard(p,d, isDealerHand);
 
         // Check for Ace or 10, J, Q, K
         Card c1 = hand.get(0);
-        Card c2 = hand.get(0);
+        Card c2 = hand.get(1);
 
         // Ace
         if(c1.getValue() == 1){
-            if(c2.getValue() == 10)
+            if(c2.getValue() == 10){
+                c2.setBack(false);
                 return true;
+            }
 
         // 10, J, Q, K
         } else if(c1.getValue() == 10){
-            if(c2.getValue() == 1)
+            if(c2.getValue() == 1){
+                c2.setBack(false);
                 return true;
+            }
         }
 
         return false;
