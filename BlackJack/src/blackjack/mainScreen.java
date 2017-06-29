@@ -425,7 +425,7 @@ public class mainScreen extends javax.swing.JFrame {
         Surrender.setEnabled(false);
         BET.setEnabled(false);
         
-        if(player,getMoney() < 10){
+        if(player.getMoney() < 10){
             dispose();
             new start().setVisible(true);
         }
