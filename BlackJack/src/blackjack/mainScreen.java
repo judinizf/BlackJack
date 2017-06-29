@@ -288,7 +288,7 @@ public class mainScreen extends javax.swing.JFrame {
         }
 
         Double.setEnabled((firstbet = false));
-
+        Surrender.setEnabled((firstbet = false));
     }//GEN-LAST:event_BuyActionPerformed
 
     private void buyCard() throws Exception{
@@ -330,7 +330,7 @@ public class mainScreen extends javax.swing.JFrame {
             Buy.setEnabled(true);
             Double.setEnabled((firstbet = true));
             Stop.setEnabled(true);
-            Surrender.setEnabled(true);
+            Surrender.setEnabled((firstbet = true));
             BET.setEnabled(false);
         }
         
@@ -341,7 +341,6 @@ public class mainScreen extends javax.swing.JFrame {
         // Dealer compra cartas ate ficar com mais pontos que player
         while(dealer.getPoints() < player.getPoints()){
 
-            System.out.println("[DEBUG]: dealer points: " + dealer.getPoints());
             dealer.buyCard();
             
             // Show dealer hand's points
@@ -369,17 +368,20 @@ public class mainScreen extends javax.swing.JFrame {
         bet *= 2;
         PBet.setText(Integer.toString(bet));
         Double.setEnabled((firstbet = false));
+        Buy.setEnabled(false);
+        Surrender.setEnabled((firstbet = false));
+
         try{
             buyCard();
         }catch(Exception e){
             // LOST GAME
             System.out.println("ESTOUROU");
         }
-        Buy.setEnabled(false);
     }//GEN-LAST:event_DoubleActionPerformed
 
     private void SurrenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SurrenderActionPerformed
-        // TODO add your handling code here:
+        bet /= 2;
+        lostGame();
     }//GEN-LAST:event_SurrenderActionPerformed
 
     private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
