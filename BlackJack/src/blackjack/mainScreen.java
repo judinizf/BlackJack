@@ -20,7 +20,7 @@ public class mainScreen extends javax.swing.JFrame {
     static Deck deck;
     private int dificuldade;
     private int bet;
-    private boolean firstbet;
+    private boolean firstbet = true;
     //Hand hand;
 
     private static final int[] BETS = {0, 10, 25, 50, 100};
@@ -271,6 +271,9 @@ public class mainScreen extends javax.swing.JFrame {
             //lostGame();
             e.printStackTrace();
         }
+
+        Double.setEnabled((firstbet = false));
+
     }//GEN-LAST:event_BuyActionPerformed
 
     private void buyCard() throws Exception{
@@ -290,6 +293,11 @@ public class mainScreen extends javax.swing.JFrame {
     }
     
     private void BETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BETActionPerformed
+        
+        // Not valid index (bet = 0)
+        if(BET.getSelectedIndex() == 0)
+            return;
+
         //bet = BET.getSelectedIndex() + 1;
         bet = BETS[BET.getSelectedIndex()];
         //depois disso o botao de BET nao pode mais ser clicado
@@ -303,7 +311,7 @@ public class mainScreen extends javax.swing.JFrame {
             // Coloca as cartas na interface
             //PlayerCards.setText(player.getCards());
             Buy.setEnabled(true);
-            Double.setEnabled(true);
+            Double.setEnabled((firstbet = true));
             Stop.setEnabled(true);
             Surrender.setEnabled(true);
             BET.setEnabled(false);
@@ -316,17 +324,17 @@ public class mainScreen extends javax.swing.JFrame {
         // Dealer compra cartas ate ficar com mais pontos que player
         while(dealer.getPoints() < player.getPoints()){
 
+            System.out.println("[DEBUG]: dealer points: " + dealer.getPoints());
             dealer.buyCard();
+            
+            // Show dealer hand's points
+            DealerPoints.setText(Integer.toString(dealer.getPoints()));
 
             // Dealer estourou
             if(dealer.getPoints() > 21){
                 winGame();
                 return;
             }
-
-            // Show dealer hand's points
-            DealerPoints.setText(Integer.toString(dealer.getPoints()));
-
         }
         // Em empate, o dealer ganha
         if(dealer.getPoints() >= player.getPoints()){
@@ -341,6 +349,7 @@ public class mainScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         bet *= 2;
         PBet.setText(Integer.toString(bet));
+        Double.setEnabled((firstbet = false));
         try{
             buyCard();
         }catch(Exception e){
