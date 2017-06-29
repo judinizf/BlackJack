@@ -44,7 +44,8 @@ public class Player {
     }
     
     public String getCards(){
-        return handAux.getCards();
+        // return handAux.getCards();
+        return null;
     }
     
     public int getMoney(){

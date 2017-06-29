@@ -204,18 +204,24 @@ public class mainScreen extends javax.swing.JFrame {
         try{
             buyCard();
         }catch(Exception e){
-            // LOST GAME
+            e.printStackTrace();
         }
     }//GEN-LAST:event_BuyActionPerformed
 
     private void buyCard() throws Exception{
+        
+        if(player.getPoints()>21){
+            throw new Exception("Mão Estourada");
+        }
+
         player.buyCard();
         PlayerPoints.setText(Integer.toString(player.getPoints()));
         //caso passe das duas primeiras cartas, deixa o botao de double nao clicavel
 
         // adiciona a carta na interface
-        if(player.getPoints()>21){
-            throw new Exception("Mão Estourada");
+        if(player.getPoints() > 21){
+            return;
+            // lostGame
         }
     }
     
@@ -237,22 +243,7 @@ public class mainScreen extends javax.swing.JFrame {
 
     private void StopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StopActionPerformed
         
-        // TODO add your handling code here:
-        
-        // Aqui tera q parar a vez do jogador e fazer a vez do dealer
-        // botoes do jogador deixa de ser clicavel
-        if(/*dealer ja tem mais pontos*/){
-            // Dealer ganha
-        }else if{
-            while(/*dealer com menos pontos q o jogadr*/){
-                // dealer compra carta
-            }
-            // Verifica se o dealer esta estourado ou nao.
-            // se o dealer estourou jogador ganha
-            //jogador ganha o money
-            // se nao, dealer ganha
-            // LOST GAME
-
+        // Dealer compra cartas ate ter mais pontos do que o player
         while(dealer.getPoints() < player.getPoints()){
             dealer.buyCard();
         }
