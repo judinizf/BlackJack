@@ -43,4 +43,8 @@ public class Dealer {
     public Vector<Card> getHand(){
         return handAux2.getHand();
     }
+    
+    public void checkA(){
+        handAux2.checkA();
+    }
 }

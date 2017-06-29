@@ -58,4 +58,18 @@ public class Hand{
     public Vector<Card> getHand(){
         return this.hand;
     }
+    
+    public void checkA(){
+        if(hand.size() == 2){
+            if(hand.elementAt(0).getValue() == 1 && hand.elementAt(1).getValue() == 10){
+                hand.elementAt(0).setValue(11);
+                points += 10;
+            }
+            if(hand.elementAt(0).getValue() == 10 && hand.elementAt(1).getValue() == 1){
+                hand.elementAt(1).setValue(11);
+                points += 10;
+            }
+            
+        }
+    }
 }

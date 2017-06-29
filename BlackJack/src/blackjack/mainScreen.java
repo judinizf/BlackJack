@@ -421,8 +421,10 @@ public class mainScreen extends javax.swing.JFrame {
         //depois disso o botao de BET nao pode mais ser clicado
         if(bet <= player.getMoney()){
             player.initialHand(player,dealer);
+            player.checkA();
             PlayerPoints.setText(Integer.toString(player.getPoints()));
             dealer.initialHand(player,dealer);
+            dealer.checkA();
             DealerPoints.setText(Integer.toString(dealer.getPoints()));
             PBet.setText(Integer.toString(bet));
             NDeck.setText(Integer.toString(deck.nCards()));
