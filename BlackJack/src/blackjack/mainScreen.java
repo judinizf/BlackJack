@@ -403,7 +403,7 @@ public class mainScreen extends javax.swing.JFrame {
         bet = BETS[BET.getSelectedIndex()];
         //depois disso o botao de BET nao pode mais ser clicado
         //try catch
-        if(bet < player.getMoney()){
+        if(bet <= player.getMoney()){
             player.initialHand();
             PlayerPoints.setText(Integer.toString(player.getPoints()));
             dealer.initialHand();

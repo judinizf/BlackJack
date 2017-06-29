@@ -13,15 +13,22 @@ public class Hand{
     }
 
     public void newHand (){
-        hand.addElement(mainScreen.deck.buyCard());
+        /*hand.addElement(mainScreen.deck.buyCard());
         points += ((Card)hand.elementAt(0)).getValue();
         hand.addElement(mainScreen.deck.buyCard());
         points += ((Card)hand.elementAt(1)).getValue();
+        */
+        buyCard();
+        buyCard();
     }
     
     public void buyCard(){
         hand.addElement(mainScreen.deck.buyCard());
         points += ((Card)hand.elementAt(hand.size()-1)).getValue();
+        if(mainScreen.deck.nCards() == 0){
+            //shuffle
+        }
+        
     }
         
 	/*public void add(Card c) throws Exception {
@@ -39,5 +46,9 @@ public class Hand{
     
     public int getPoints(){
         return this.points;
+    }
+    
+    public Vector<Card> getHand(){
+        return this.hand;
     }
 }
