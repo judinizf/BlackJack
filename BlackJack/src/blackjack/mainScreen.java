@@ -379,7 +379,7 @@ public class mainScreen extends javax.swing.JFrame {
             throw new Exception("Mão Estourada");
         }
 
-        player.buyCard();
+        player.buyCard(player,dealer);
         PlayerPoints.setText(Integer.toString(player.getPoints()));
         NDeck.setText(Integer.toString(deck.nCards()));
 
@@ -423,9 +423,9 @@ public class mainScreen extends javax.swing.JFrame {
         //depois disso o botao de BET nao pode mais ser clicado
         //try catch
         if(bet <= player.getMoney()){
-            player.initialHand();
+            player.initialHand(player,dealer);
             PlayerPoints.setText(Integer.toString(player.getPoints()));
-            dealer.initialHand();
+            dealer.initialHand(player,dealer);
             DealerPoints.setText(Integer.toString(dealer.getPoints()));
             PBet.setText(Integer.toString(bet));
             NDeck.setText(Integer.toString(deck.nCards()));
@@ -447,7 +447,7 @@ public class mainScreen extends javax.swing.JFrame {
         // Dealer compra cartas ate ficar com mais pontos que player
         while(dealer.getPoints() < player.getPoints()){
 
-            dealer.buyCard();
+            dealer.buyCard(player,dealer);
             updateCardIcon();
             
             // Show dealer hand's points

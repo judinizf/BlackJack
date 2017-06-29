@@ -16,16 +16,16 @@ public class Dealer {
         return true;
     }
     
-    public void initialHand(){
-        handAux2.newHand();
+    public void initialHand(Player p, Dealer d){
+        handAux2.newHand(p,d);
     }
     /*
     public void askCard(){
         handAux2.buyCard();
     }*/
 
-    public void buyCard(){
-        handAux2.buyCard();
+    public void buyCard(Player p, Dealer d){
+        handAux2.buyCard(p,d);
     }
     
     public int getPoints(){

@@ -18,16 +18,16 @@ public class Player {
         return true;
     }
     
-    public void initialHand(){
-        handAux.newHand();
+    public void initialHand(Player p, Dealer d){
+        handAux.newHand(p,d);
     }
     
     public void removeHand(){
         handAux.removeAll();
     }
     
-    public void buyCard(){
-        handAux.buyCard();
+    public void buyCard(Player p, Dealer d){
+        handAux.buyCard(p,d);
     } 
 
     public void doubleIt(int bet){

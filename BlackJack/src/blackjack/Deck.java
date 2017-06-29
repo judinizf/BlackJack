@@ -45,9 +45,44 @@ public class Deck{
         Collections.shuffle(list);
         top = 0;
         deck = (Card[]) list.toArray();
-
+        int valueAux;
+        int suitAux;        
+        
         Vector<Card> phand = p.getHand();
         Vector<Card> dhand = d.getHand();
+        
+        for(int i=0; i<phand.size(); i++){
+            for(int j=0; j<count; j++){
+                if(phand.elementAt(i).getValue() == deck[j].getValue() && 
+                        phand.elementAt(i).getSuit() == deck[j].getSuit()){
+                    valueAux = deck[j].getValue();
+                    suitAux = deck[j].getSuit();
+                    deck[j].setValue(deck[top].getValue());
+                    deck[j].setSuit(deck[top].getSuit());
+                    deck[top].setValue(valueAux);
+                    deck[top].setSuit(suitAux);
+                    top++;
+                    break;
+                }
+            }
+        }
+        
+        for(int i=0; i<dhand.size(); i++){
+            for(int j=0; j<count; j++){
+                if(dhand.elementAt(i).getValue() == deck[j].getValue() && 
+                        dhand.elementAt(i).getSuit() == deck[j].getSuit()){
+                    valueAux = deck[j].getValue();
+                    suitAux = deck[j].getSuit();
+                    deck[j].setValue(deck[top].getValue());
+                    deck[j].setSuit(deck[top].getSuit());
+                    deck[top].setValue(valueAux);
+                    deck[top].setSuit(suitAux);
+                    top++;
+                    break;
+                }
+            }
+        }
+        
         return deck;
     }
     
