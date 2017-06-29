@@ -21,7 +21,7 @@ public class Deck{
         this.deckNum = deckNum;
         this.nCards = DECK_SIZE*deckNum;
         this.deck = new Card[nCards];
-                
+        this.top = 0;
         // Iterate through all decks from 1 to 8, inclusive
         for (int i = 0; i < this.deckNum; i++) {
             for (int j = 1; j <= SUIT_SIZE; j++) {
@@ -30,6 +30,8 @@ public class Deck{
                 }
             }
         }
+        System.out.println("[DEBUG]: Creating Deck");
+        System.out.println("[DEBUG]: deck["+this.deck.length+"]: " + top);
     }
     
     public Card[] shuffleDeck(){
@@ -41,6 +43,8 @@ public class Deck{
     }
 
     public Card buyCard(){
+        System.out.println("top: " + top);
+        System.out.println("deck["+this.deck.length+"]: " + top);
         return this.deck[top++];
     }
 }

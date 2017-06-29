@@ -11,7 +11,7 @@ package blackjack;
  */
 public class start extends javax.swing.JFrame {
 
-    private int dificuldade;
+    private int dificuldade = 1;
     mainScreen screen;
     public start() {
         initComponents();
