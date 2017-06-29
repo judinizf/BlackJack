@@ -2,3 +2,6 @@ BlackJack/build/
 BlackJack/build/*
 BlackJack/nbproject/
 *.class
+*.zip
+*.tar*
+
