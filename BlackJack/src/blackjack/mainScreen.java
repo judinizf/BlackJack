@@ -75,6 +75,8 @@ public class mainScreen extends javax.swing.JFrame {
         PMoney = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         PBet = new javax.swing.JLabel();
+        WIN = new javax.swing.JLabel();
+        LOSE = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -160,6 +162,12 @@ public class mainScreen extends javax.swing.JFrame {
 
         PBet.setText("0");
 
+        WIN.setFont(new java.awt.Font("Noto Sans", 0, 24)); // NOI18N
+        WIN.setText("WIN");
+
+        LOSE.setFont(new java.awt.Font("Noto Sans", 0, 24)); // NOI18N
+        LOSE.setText("LOSE");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,6 +197,10 @@ public class mainScreen extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(PlayerPoints)
+                        .addGap(158, 158, 158)
+                        .addComponent(WIN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LOSE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,8 +219,16 @@ public class mainScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(DealerCards, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(PlayerPoints))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 14, Short.MAX_VALUE)
+                                .addComponent(PlayerPoints))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(WIN)
+                                    .addComponent(LOSE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -236,7 +256,7 @@ public class mainScreen extends javax.swing.JFrame {
         try{
             buyCard();
         }catch(Exception e){
-            // LOST GAME
+            lostGame();
         }
     }//GEN-LAST:event_BuyActionPerformed
 
@@ -275,23 +295,12 @@ public class mainScreen extends javax.swing.JFrame {
     private void StopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StopActionPerformed
         
         // TODO add your handling code here:
-        /*
-        // Aqui tera q parar a vez do jogador e fazer a vez do dealer
-        // botoes do jogador deixa de ser clicavel
-        if(/*dealer ja tem mais pontos){
-            // Dealer ganha
-        }else if{
-            while(/*dealer com menos pontos q o jogadr){
-                // dealer compra carta
-            }
-            // Verifica se o dealer esta estourado ou nao.
-            // se o dealer estourou jogador ganha
-            //jogador ganha o money
-            // se nao, dealer ganha
-            // LOST GAME
-        */
+        dealer.initialHand();
+        DealerPoints.setText(Integer.toString(dealer.getPoints()));
+       
         while(dealer.getPoints() < player.getPoints()){
             dealer.buyCard();
+            DealerPoints.setText(Integer.toString(dealer.getPoints()));
         }
         // Verifica se o dealer esta estourado ou nao.
         if(dealer.getPoints() > 21 || dealer.getPoints() < player.getPoints())
@@ -313,8 +322,6 @@ public class mainScreen extends javax.swing.JFrame {
             System.out.println("ESTOUROU");
         }
         Buy.setEnabled(false);
-        //jogador compra carta
-        //botao de comprar fica nao clicavel
     }//GEN-LAST:event_DoubleActionPerformed
 
     private void SurrenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SurrenderActionPerformed
@@ -323,15 +330,30 @@ public class mainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_SurrenderActionPerformed
 
     private void winGame(){
-        player.winMoney(BETS[bet]);
-        player.removeHand();
-        dealer.removeHand();
+        finishGame(true);
     }
 
     private void lostGame(){
+        finishGame(false);
+    }
+    
+    private void finishGame(boolean win){
+        if(win) player.winMoney(bet);
+        else player.loseMoney(bet);
+        
         player.removeHand();
         dealer.removeHand();
-        player.loseMoney(bet);
+        bet = 0;
+        PlayerPoints.setText(Integer.toString(player.getPoints()));
+        DealerPoints.setText(Integer.toString(player.getPoints()));
+        PBet.setText(Integer.toString(bet));
+        PMoney.setText(Integer.toString(player.getMoney()));
+        
+        Buy.setEnabled(false);
+        Double.setEnabled(false);
+        Stop.setEnabled(false);
+        Surrender.setEnabled(false);
+        BET.setEnabled(true);
     }
     
     /**
@@ -382,6 +404,7 @@ public class mainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel DealerCards;
     private javax.swing.JLabel DealerPoints;
     private javax.swing.JButton Double;
+    private javax.swing.JLabel LOSE;
     private javax.swing.JLabel PBet;
     private javax.swing.JLabel PCard1;
     private javax.swing.JLabel PCard2;
@@ -395,6 +418,7 @@ public class mainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel PlayerPoints;
     private javax.swing.JButton Stop;
     private javax.swing.JButton Surrender;
+    private javax.swing.JLabel WIN;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JToggleButton jToggleButton1;
