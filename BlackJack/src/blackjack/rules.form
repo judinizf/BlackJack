@@ -23,14 +23,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="163" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="Back" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="401" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -39,7 +44,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="207" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="251" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Back" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -62,5 +69,21 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackActionPerformed"/>
       </Events>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="Objetivo&#xa;A m&#xe3;o mais elevada no blackjack &#xe9; um &#xc1;s e uma carta de 10 &#xa;pontos e &#xe9; chamada justamente de blackjack. O jogador ganha se &#xa;a sua m&#xe3;o tiver mais pontos que a do dealer, sem ir acima de 21. &#xa;Assim uma m&#xe3;o de 21 pontos &#xe9; a mais elevada e &#xe9; por isso que o &#xa;jogo &#xe9; chamado &#xe0;s vezes de 21. Se o jogador ou o dealer forem&#xa;acima de 21 perde automaticamente.&#xa;&#xa;Jogadas&#xa;- Parar: Se o jogador est&#xe1; satisfeito com sua m&#xe3;o e n&#xe3;o quer &#xa;pedir mais cartas.&#xa;- Pedir: Se o jogador desejar mais uma carta.&#xa;- Dobrar: Se o jogador sentir que necessita de UMA e somente &#xa;UMA carta adicional, ent&#xe3;o pode dobrar sua aposta e receber &#xa;mais uma carta, boa ou ruim. Esta op&#xe7;&#xe3;o &#xe9; oferecida somente &#xa;nas duas primeiras cartas.&#xa;- Rendi&#xe7;&#xe3;o: Finalmente, o jogador tem a op&#xe7;&#xe3;o de rendi&#xe7;&#xe3;o nas &#xa;primeiras DUAS cartas. Se o jogador n&#xe3;o gostar das suas cartas&#xa;pode perder metade da aposta assim como suas cartas. "/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
