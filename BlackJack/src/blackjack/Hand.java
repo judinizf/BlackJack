@@ -75,6 +75,7 @@ public class Hand{
 
         this.hand = new Vector<Card>();
         this.points = 0;
+        this.visiblePoints = 0;
         return true;
     }
     

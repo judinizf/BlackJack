@@ -38,6 +38,8 @@ public class CardIconManager {
 		new ImageIcon[Deck.SUIT_SIZE][Deck.CARD_SIZE];
 	public static ImageIcon back = new ImageIcon("resources/back.jpg");
 
+	public static ImageIcon startImage = new ImageIcon("resources/unnamed.jpg");
+
 	public static void loadImages(){
 		
 		// Get enums as arrays of strings to create path
