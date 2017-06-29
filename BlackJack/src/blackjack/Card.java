@@ -41,8 +41,8 @@ enum CardSuit{
 }*/
 
 public class Card {
-    private final int suit;
-    private final int cardValue;
+    private int suit;
+    private int cardValue;
     
     public Card(int cardValue, int suit){
 
@@ -60,6 +60,18 @@ public class Card {
     
     public int getValue(){
         return cardValue;
+    }
+    
+    public void setValue(int cardValue){
+        this.cardValue = cardValue;
+    }
+    
+    public int getSuit(){
+        return suit;
+    }
+    
+    public void setSuit(int suit){
+        this.suit = suit;
     }
     
     /*public String getCardString(){

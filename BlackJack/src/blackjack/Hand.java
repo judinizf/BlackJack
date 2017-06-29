@@ -12,23 +12,22 @@ public class Hand{
         this.hand = new Vector<Card>();
     }
 
-    public void newHand (){
+    public void newHand (Player p, Dealer d){
         /*hand.addElement(mainScreen.deck.buyCard());
         points += ((Card)hand.elementAt(0)).getValue();
         hand.addElement(mainScreen.deck.buyCard());
         points += ((Card)hand.elementAt(1)).getValue();
         */
-        buyCard();
-        buyCard();
+        buyCard(p,d);
+        buyCard(p,d);
     }
     
-    public void buyCard(){
+    public void buyCard(Player p, Dealer d){
         hand.addElement(mainScreen.deck.buyCard());
         points += ((Card)hand.elementAt(hand.size()-1)).getValue();
         if(mainScreen.deck.nCards() == 0){
-            //shuffle
+            mainScreen.deck.shuffleDeck(p,d);
         }
-        
     }
         
 	/*public void add(Card c) throws Exception {
