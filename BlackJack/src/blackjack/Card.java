@@ -63,10 +63,6 @@ public class Card {
         this.cardValue = cardValue;
     }
     
-    public int getSuit(){
-        return suit;
-    }
-    
     public void setSuit(int suit){
         this.suit = suit;
     }
