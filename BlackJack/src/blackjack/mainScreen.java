@@ -77,6 +77,7 @@ public class mainScreen extends javax.swing.JFrame {
         PBet = new javax.swing.JLabel();
         WIN = new javax.swing.JLabel();
         LOSE = new javax.swing.JLabel();
+        Next = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -168,25 +169,28 @@ public class mainScreen extends javax.swing.JFrame {
         LOSE.setFont(new java.awt.Font("Noto Sans", 0, 24)); // NOI18N
         LOSE.setText("LOSE");
 
+        Next.setText("Next");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(319, 398, Short.MAX_VALUE)
-                .addComponent(Buy)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Stop)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Double)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Surrender)
-                .addGap(7, 7, 7)
-                .addComponent(BET, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Next)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Buy)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Stop)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Double)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Surrender)
+                        .addGap(7, 7, 7)
+                        .addComponent(BET, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DealerCards, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -201,7 +205,7 @@ public class mainScreen extends javax.swing.JFrame {
                         .addComponent(WIN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(LOSE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PMoney)
@@ -219,10 +223,9 @@ public class mainScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(DealerCards, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 14, Short.MAX_VALUE)
+                                .addGap(0, 20, Short.MAX_VALUE)
                                 .addComponent(PlayerPoints))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -244,7 +247,8 @@ public class mainScreen extends javax.swing.JFrame {
                     .addComponent(Stop)
                     .addComponent(Double)
                     .addComponent(Surrender)
-                    .addComponent(BET, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BET, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Next))
                 .addContainerGap())
         );
 
@@ -331,10 +335,12 @@ public class mainScreen extends javax.swing.JFrame {
 
     private void winGame(){
         finishGame(true);
+        WIN.setVisible(true);
     }
 
     private void lostGame(){
         finishGame(false);
+        LOSE.setVisible(true);
     }
     
     private void finishGame(boolean win){
@@ -405,6 +411,7 @@ public class mainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel DealerPoints;
     private javax.swing.JButton Double;
     private javax.swing.JLabel LOSE;
+    private javax.swing.JButton Next;
     private javax.swing.JLabel PBet;
     private javax.swing.JLabel PCard1;
     private javax.swing.JLabel PCard2;
