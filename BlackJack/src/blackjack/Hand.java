@@ -32,6 +32,7 @@ public class Hand{
 
   	public boolean removeAll(){
         this.hand = new Vector();
+        this.points = 0;
         return true;
     }
     
