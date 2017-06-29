@@ -10,7 +10,7 @@ package blackjack;
  * @author juvest
  */
 
-enum CardValue{
+/*enum CardValue{
     ACE (1),
     TWO (2),
     THREE (3),
@@ -38,30 +38,11 @@ enum CardSuit{
 
     public final int value;
     CardSuit(int value){ this.value = value; }
-}
+}*/
 
 public class Card {
     private final int suit;
     private final int cardValue;
-    /*cards from deck   ace = 1,
-                        two = 2,
-                        three = 3,
-                        four = 4,
-                        five = 5,
-                        six = 6,
-                        seven = 7,
-                        eight = 8,
-                        nine = 9,
-                        ten = 10,
-                        jack = 11,
-                        queen = 12,
-                        king = 13;
-    
-    suits from deck     spades = 1,
-                        hearts = 2,
-                        diamonds = 3,
-                        clubs = 4;
-    */
     
     public Card(int cardValue, int suit){
 
