@@ -13,7 +13,8 @@ import java.util.Vector;
 public class Hand{
     
     private Vector<Card> hand;
-	private int points;
+    private int points;
+	private int visiblePoints;
 
 	public Hand(){
         this.points = 0;
@@ -29,15 +30,41 @@ public class Hand{
         buyCard(p,d);
         buyCard(p,d);
     }
+
+    public void newHand (Player p, Dealer d, boolean isDealerHand){
+        buyCard(p,d);
+        buyCard(p,d, isDealerHand);
+    }
     
     public void buyCard(Player p, Dealer d){
+
+        // Get card from deck and add it to hand
         hand.addElement(mainScreen.deck.buyCard());
+
+        // Update points
         points += ((Card)hand.elementAt(hand.size()-1)).getValue();
+        visiblePoints += ((Card)hand.elementAt(hand.size()-1)).getValue();
+
         if(mainScreen.deck.nCards() == 0){
             mainScreen.deck.shuffleDeck(p,d);
         }
     }
-        
+     
+    public void buyCard(Player p, Dealer d, boolean isDealerHand){
+
+        // Get card from deck and add it to hand but set its back value to true
+        Card c = mainScreen.deck.buyCard();
+        c.setBack(true);
+        hand.addElement(c);
+
+        // Update only internal points
+        points += ((Card)hand.elementAt(hand.size()-1)).getValue();
+
+        if(mainScreen.deck.nCards() == 0){
+            mainScreen.deck.shuffleDeck(p,d);
+        }
+    }
+
 	/*public void add(Card c) throws Exception {
         if(this.points <= 21)
         this.hand.addElement(c);
@@ -48,11 +75,16 @@ public class Hand{
 
         this.hand = new Vector<Card>();
         this.points = 0;
+        this.visiblePoints = 0;
         return true;
     }
     
     public int getPoints(){
         return this.points;
+    }
+
+    public int getVisiblePoints(){
+        return this.visiblePoints; 
     }
     
     public Vector<Card> getHand(){

@@ -304,66 +304,70 @@ public class mainScreen extends javax.swing.JFrame {
         DCard5.setIcon(new ImageIcon(""));
         DCard6.setIcon(new ImageIcon(""));
         DCard7.setIcon(new ImageIcon(""));
-
     }
 
     private void setCardIcons(Card c, String cardLabel){
 
+        ImageIcon ii;
+
+        if(c.isBack())
+            ii = CardIconManager.back;
+        else
+            ii = CardIconManager.cards[c.getSuit()-1][c.getIconValue()-1];
+
         switch(cardLabel){
 
         case "PCard1":
-            PCard1.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            PCard1.setIcon(ii);
             break;
         case "PCard2":
-            PCard2.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            PCard2.setIcon(ii);
             break;
         case "PCard3":
-            PCard3.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            PCard3.setIcon(ii);
             break;
         case "PCard4":
-            PCard4.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            PCard4.setIcon(ii);
             break;
         case "PCard5":
-            PCard5.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            PCard5.setIcon(ii);
             break;
         case "PCard6":
-            PCard6.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            PCard6.setIcon(ii);
             break;
         case "PCard7":
-            PCard7.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            PCard7.setIcon(ii);
             break;
 
         case "DCard1":
-            DCard1.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            DCard1.setIcon(ii);
             break;
         case "DCard2":
-            DCard2.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            DCard2.setIcon(ii);
             break;
         case "DCard3":
-            DCard3.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            DCard3.setIcon(ii);
             break;
         case "DCard4":
-            DCard4.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            DCard4.setIcon(ii);
             break;
         case "DCard5":
-            DCard5.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            DCard5.setIcon(ii);
             break;
         case "DCard6":
-            DCard6.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            DCard6.setIcon(ii);
             break;
         case "DCard7":
-            DCard7.setIcon(CardIconManager.cards[c.getSuit()-1][c.getValue()-1]);
+            DCard7.setIcon(ii);
             break;
         }
-
     }
 
     private void BuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyActionPerformed
-        // TODO add your handling code here:
+
         try{
             buyCard();
         }catch(Exception e){
-            //lostGame();
             e.printStackTrace();
         }
 
@@ -418,6 +422,7 @@ public class mainScreen extends javax.swing.JFrame {
 
         //bet = BET.getSelectedIndex() + 1;
         bet = BETS[BET.getSelectedIndex()];
+
         //depois disso o botao de BET nao pode mais ser clicado
         if(bet <= player.getMoney()){
             player.initialHand(player,dealer);
@@ -425,17 +430,18 @@ public class mainScreen extends javax.swing.JFrame {
             PlayerPoints.setText(Integer.toString(player.getPoints()));
             dealer.initialHand(player,dealer);
             dealer.checkA();
-            DealerPoints.setText(Integer.toString(dealer.getPoints()));
+            DealerPoints.setText(Integer.toString(dealer.getVisiblePoints()));
             PBet.setText(Integer.toString(bet));
             NDeck.setText(Integer.toString(deck.nCards()));
-            // Coloca as cartas na interface
-            //PlayerCards.setText(player.getCards());
+
+            // Habilita os botoes necessarios
             Buy.setEnabled(true);
             Double.setEnabled((firstbet = true));
             Stop.setEnabled(true);
             Surrender.setEnabled((firstbet = true));
             BET.setEnabled(false);
 
+            // Coloca as cartas na interface
             updateCardIcon();
         }
         
@@ -450,7 +456,7 @@ public class mainScreen extends javax.swing.JFrame {
             updateCardIcon();
             
             // Show dealer hand's points
-            DealerPoints.setText(Integer.toString(dealer.getPoints()));
+            DealerPoints.setText(Integer.toString(dealer.getVisiblePoints()));
             NDeck.setText(Integer.toString(deck.nCards()));
 
             // Dealer estourou
@@ -519,11 +525,23 @@ public class mainScreen extends javax.swing.JFrame {
     }
     
     private void finishGame(boolean win){
+        Vector<Card> hand = dealer.getHand();
+
+        for(Card c : hand){
+            if(c.isBack())
+                c.setBack(false);
+            updateCardIcon();
+
+            // Display full dealer score
+            DealerPoints.setText(Integer.toString(dealer.getPoints()));
+        }
+
         if(win) player.winMoney(bet);
         else player.loseMoney(bet);
         
         player.removeHand();
         dealer.removeHand();
+
         bet = 0;
         Next.setVisible(true);
         Buy.setEnabled(false);
