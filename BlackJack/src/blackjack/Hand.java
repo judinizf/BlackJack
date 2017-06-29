@@ -39,5 +39,9 @@ public class Hand{
         public int getPoints(){
             return this.points;
         }
+        
+        /*public String getCards(){
+            
+        }*/
 
 }

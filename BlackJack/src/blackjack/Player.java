@@ -44,6 +44,10 @@ public class Player {
         return this.handAux.getPoints();
     }
     
+    public String getCards(){
+        return handAux.getCards();
+    }
+    
     public int getMoney(){
         return this.money;
     }
