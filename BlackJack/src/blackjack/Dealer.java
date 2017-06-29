@@ -17,7 +17,7 @@ public class Dealer {
     }
     
     public void initialHand(Player p, Dealer d){
-        handAux2.newHand(p,d);
+        handAux2.newHand(p, d, true);
     }
     /*
     public void askCard(){
@@ -30,6 +30,10 @@ public class Dealer {
     
     public int getPoints(){
         return this.handAux2.getPoints();
+    }
+
+    public int getVisiblePoints(){
+        return this.handAux2.getVisiblePoints();
     }
 
     public void removeHand(){

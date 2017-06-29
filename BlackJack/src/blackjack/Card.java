@@ -14,9 +14,12 @@ public class Card {
 
     private int suit;
     private int cardValue;
-    private int isBack = false;
+    private int iconCardValue;
+    private boolean isBack = false;
     
     public Card(int cardValue, int suit){
+
+        iconCardValue = cardValue;
 
         if(cardValue >= 11 && cardValue <= 13)
             cardValue = 10;
@@ -26,12 +29,25 @@ public class Card {
     }
     
     public Card(Card c){
+        this.iconCardValue = c.cardValue;
         this.cardValue = c.cardValue;
         this.suit = c.suit;
     }
 
+    public void setBack(boolean value){
+        this.isBack = value;
+    }
+
+    public boolean isBack(){
+        return this.isBack;
+    }
+
     public int getValue(){
         return cardValue;
+    }
+
+    public int getIconValue(){
+        return iconCardValue;
     }
 
     public int getSuit(){
@@ -57,6 +73,8 @@ public class Card {
             s += "C";
             break;
         }
+
+        System.out.println("[DEBUG]: IS BACK: " + (isBack ? "TRUE" : "FALSE"));
 
         return (s + Integer.toString(this.cardValue));
     }
