@@ -31,8 +31,6 @@ public class Deck{
                 }
             }
         }
-        System.out.println("[DEBUG]: Creating Deck");
-        System.out.println("[DEBUG]: deck["+this.deck.length+"]: " + top);
     }
     
     public Card[] shuffleDeck(){
@@ -48,8 +46,6 @@ public class Deck{
     }
 
     public Card buyCard(){
-        System.out.println("top: " + top);
-        System.out.println("deck["+this.deck.length+"]: " + top);
         return this.deck[top++];
     }
 }

@@ -260,7 +260,6 @@ public class mainScreen extends javax.swing.JFrame {
     private void BETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BETActionPerformed
         //bet = BET.getSelectedIndex() + 1;
         bet = BETS[BET.getSelectedIndex()];
-        System.out.println("bet = " + bet);
         //depois disso o botao de BET nao pode mais ser clicado
         //try catch
         if(bet < player.getMoney()){
@@ -314,7 +313,7 @@ public class mainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_SurrenderActionPerformed
 
     private void winGame(){
-        player.winMoney(BETS[bet]);
+        player.winMoney(bet);
         player.removeHand();
         dealer.removeHand();
     }
